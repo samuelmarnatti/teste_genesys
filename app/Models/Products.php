@@ -10,4 +10,9 @@ class Products extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'price', 'active'];
+
+    public function getPriceAttribute($value)
+    {
+        return "R$" . number_format($this->attributes['price'], 2, ',', '.');
+    }
 }

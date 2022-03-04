@@ -20,8 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("tasks", "TasksController@index");
-Route::post("tasks", "TasksController@store");
-Route::get("tasks/{product}", "TasksController@show");
-Route::patch("tasks/{product}", "TasksController@update");
-Route::delete("tasks/{product}", "TasksController@delete");
+// Produtos
+Route::get("produto", "ProdutoController@index");
+Route::get("produto/{product}", "ProdutoController@show");
+Route::post("produto", "ProdutoController@store");
+Route::patch("produto/{product}", "ProdutoController@update");
+Route::delete("produto/{product}", "ProdutoController@delete");
