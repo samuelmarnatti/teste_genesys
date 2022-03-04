@@ -21,5 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("tasks", "TasksController@index");
-// Route::post("tasks", "TasksController@index");
 Route::post("tasks", "TasksController@store");
+Route::get("tasks/{product}", "TasksController@show");
+Route::patch("tasks/{product}", "TasksController@update");
+Route::delete("tasks/{product}", "TasksController@delete");
