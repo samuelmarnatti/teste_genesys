@@ -101,3 +101,92 @@ Recursos disponíveis para acesso via API:
 | `DELETE` | http://localhost:8000/api/loja/{id}  |Remove uma loja do sistema. |
 
 
+#### Exemplo de Retorno
+##### GET: http://localhost:8000/api/loja/
+
+    [
+        {
+            "id": 1,
+            "nome": "Amazon",
+            "email": "atendimento@magalu.com.br",
+            "created_at": null,
+            "updated_at": "2022-03-05T00:04:36.000000Z"
+        },
+        {
+            "id": 2,
+            "nome": "casas bahia",
+            "email": "financeiro@casasbahia.com.br",
+            "created_at": null,
+            "updated_at": null
+        },
+        {
+            "id": 4,
+            "nome": "Americanas",
+            "email": "financeiro@americanas.com",
+            "created_at": "2022-03-05T16:25:19.000000Z",
+            "updated_at": "2022-03-05T16:26:42.000000Z"
+        },
+        {
+            "id": 13,
+            "nome": "havan",
+            "email": "financeiro@havan.com.br",
+            "created_at": "2022-03-05T20:43:55.000000Z",
+            "updated_at": "2022-03-05T20:49:21.000000Z"
+        }
+    ]
+  
+##### GET: http://localhost:8000/api/loja/2
+        [
+        {
+            "id": 2,
+            "nome": "casas bahia",
+            "email": "financeiro@casasbahia.com.br",
+            "created_at": null,
+            "updated_at": null,
+            "produtos": [
+                {
+                    "id": 13,
+                    "nome": "celular",
+                    "valor": "R$1.500,00",
+                    "ativo": 1,
+                    "loja_id": 2,
+                    "created_at": "2022-03-05T19:52:05.000000Z",
+                    "updated_at": "2022-03-05T22:42:31.000000Z"
+                },
+                {
+                    "id": 14,
+                    "nome": "notebook",
+                    "valor": "R$3.000,00",
+                    "ativo": 1,
+                    "loja_id": 2,
+                    "created_at": "2022-03-05T19:52:54.000000Z",
+                    "updated_at": "2022-03-05T23:10:20.000000Z"
+                },
+                {
+                    "id": 17,
+                    "nome": "Tablet",
+                    "valor": "R$900,00",
+                    "ativo": 0,
+                    "loja_id": 2,
+                    "created_at": "2022-03-05T20:15:38.000000Z",
+                    "updated_at": "2022-03-05T20:52:00.000000Z"
+                }
+            ]
+        }
+    ]
+##### POST: http://localhost:8000/api/loja?nome=havan&email=financeiro@havan.com.br
+    {
+    "success": true
+    }
+##### PATCH: http://localhost:8000/api/loja/1?email=atendimento@amazon.com.br
+    {
+    "id": 1,
+    "nome": "Amazon",
+    "email": "atendimento@amazon.com.br",
+    "created_at": null,
+    "updated_at": "2022-03-05T23:43:00.000000Z"
+    }
+##### DELETE: http://localhost:8000/api/loja/4
+     {
+    "success": true
+     }
