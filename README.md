@@ -1,7 +1,7 @@
    
 # API Teste Genesys
 
-API REST criada para teste da empresa genesys. Essa API permite visualizar informações de produtos, alterar e deletar. Também é possível tomar as mesas ações com cada loja cadastrada.
+API REST criada para teste da empresa genesys. Essa API permite visualizar, alterar e deletar informações de produtos e lojas.
 
 Recursos disponíveis para acesso via API:
 
@@ -18,6 +18,47 @@ Recursos disponíveis para acesso via API:
 | `PATCH`  | http://localhost:8000/api/produto/{id}?nome=cadeira&valor=150&ativo=1&loja_id=2  |Atualiza dados de um produto. |
 | `DELETE` | http://localhost:8000/api/produto/{id}  |Remove um produto do sistema. |
 
+#### Retorno
+    [
+    {
+        "id": 13,
+        "nome": "celular",
+        "valor": "R$1.500,00",
+        "ativo": 1,
+        "loja_id": 2,
+        "created_at": "2022-03-05T19:52:05.000000Z",
+        "updated_at": "2022-03-05T22:42:31.000000Z"
+    },
+    {
+        "id": 14,
+        "nome": "celular",
+        "valor": "R$200,00",
+        "ativo": 0,
+        "loja_id": 2,
+        "created_at": "2022-03-05T19:52:54.000000Z",
+        "updated_at": "2022-03-05T19:52:54.000000Z"
+    },
+    {
+        "id": 15,
+        "nome": "Tablet",
+        "valor": "R$11,00",
+        "ativo": 0,
+        "loja_id": 1,
+        "created_at": "2022-03-05T20:07:02.000000Z",
+        "updated_at": "2022-03-05T20:07:02.000000Z"
+    },
+    {
+        "id": 17,
+        "nome": "Tablet",
+        "valor": "R$900,00",
+        "ativo": 0,
+        "loja_id": 2,
+        "created_at": "2022-03-05T20:15:38.000000Z",
+        "updated_at": "2022-03-05T20:52:00.000000Z"
+    }
+]
+
+
 ### Loja
 | Método | EX Comando | Descrição|
 |---|---|---|
@@ -25,5 +66,6 @@ Recursos disponíveis para acesso via API:
 | `GET`    | http://localhost:8000/api/loja/{id} |Retorna informações da loja selecionada pelo id e todos os produtos da loja|
 | `POST`   | http://localhost:8000/api/loja?nome=havan&email=financeiro@havan.com.br |Cadastra uma nova loja |
 | `PATCH`  | http://localhost:8000/api/loja/{id}?email=financeiro@havan.com.br  |Atualiza dados de uma loja. |
-| `DELETE` | http://localhost:8000/api/produto/{id}  |Remove uma loja do sistema. |
+| `DELETE` | http://localhost:8000/api/loja/{id}  |Remove uma loja do sistema. |
+
 
