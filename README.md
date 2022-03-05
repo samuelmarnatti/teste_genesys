@@ -18,7 +18,8 @@ Recursos disponíveis para acesso via API:
 | `PATCH`  | http://localhost:8000/api/produto/{id}?nome=cadeira&valor=150&ativo=1&loja_id=2  |Atualiza dados de um produto. |
 | `DELETE` | http://localhost:8000/api/produto/{id}  |Remove um produto do sistema. |
 
-#### Retorno
+#### Exemplo de Retorno
+##### http://localhost:8000/api/produto/
     [
     {
         "id": 13,
