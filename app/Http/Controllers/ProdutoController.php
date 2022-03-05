@@ -13,7 +13,6 @@ class ProdutoController extends Controller
 
         $results = Produtos::All();
 
-
         return $results;
     }
 

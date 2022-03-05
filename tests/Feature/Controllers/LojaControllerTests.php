@@ -2,53 +2,37 @@
 
 namespace Tests\Feature\Controllers;
 
-use App\Models\Produtos;
+use App\Models\Lojas;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Response;
 use Tests\TestCase;
 
-class ProdutoControllerTests extends TestCase
+class LojaControllerTests extends TestCase
 {
     /**
      * A basic feature test example.
      *
      * @return void
      */
-
-    //  testa se não ocorreu nenhum erro na resposta e se as informações estão corretas
+    //  testa se não ocorreu nenhum erro na resposta e se a estrutura das informações estão corretas
     public function testIndexReturnsDataInValidFormat()
     {
-        $this->json('get', 'api/produto')
+        $this->json('get', 'api/loja')
             ->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure(
                 [
                     [
-
                         'nome',
-                        'valor',
-                        'ativo',
-                        'loja_id'
+                        'email'
                     ]
                 ]
             );
     }
-    public function testShowReturnsDataInValidFormat()
-    {
-        $this->json('get', 'api/produto/1')
-            ->assertStatus(Response::HTTP_OK)
-            ->assertJsonStructure(
-                [
-                    'nome',
-                    'valor',
-                    'ativo',
-                    'loja_id'
-                ]
-            );
-    }
+
     public function testStoreReturnsDataInValidFormat()
     {
-        $this->json('post', 'api/produto?nome=teste&valor=200&ativo=1&loja_id=1')
+        $this->json('post', 'api/loja?nome=teste&email=teste@teste.com')
             ->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure(
                 [
@@ -56,25 +40,39 @@ class ProdutoControllerTests extends TestCase
                 ]
             );
     }
+    public function testShowReturnsDataInValidFormat()
+    {
+        $id_shop = Lojas::select('id')->latest()->first();
+        $this->json('get', 'api/loja/' . $id_shop['id'])
+            ->assertStatus(Response::HTTP_OK)
+            ->assertJsonStructure(
+                [
+                    [
+                        'nome',
+                        'email',
+                        'produtos'
+                    ]
+                ]
+
+            );
+    }
     public function testUpdateReturnsDataInValidFormat()
     {
-        $id_product = Produtos::select('id')->latest()->first();
-        $this->json('patch', 'api/produto/' . $id_product['id'] . '?nome=testeUpdate&valor=500&ativo=0&loja_id=2')
+        $id_shop = Lojas::select('id')->latest()->first();
+        $this->json('patch', 'api/loja/' . $id_shop['id'] . '?nome=testeup&email=teste@testeupdate.com')
             ->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure(
                 [
 
                     'nome',
-                    'valor',
-                    'ativo',
-                    'loja_id'
+                    'email',
                 ]
             );
     }
     public function testDeleteReturnsDataInValidFormat()
     {
-        $id_product = Produtos::select('id')->latest()->first();
-        $this->json('delete', 'api/produto/' . $id_product['id'])
+        $id_shop = Lojas::select('id')->latest()->first();
+        $this->json('delete', 'api/loja/' . $id_shop['id'])
             ->assertStatus(Response::HTTP_OK)
             ->assertJsonStructure(
                 [
