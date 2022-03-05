@@ -20,7 +20,7 @@ class ProdutoController extends Controller
     {
         $request->validate([
             'nome'    => 'required|max:60|min:3',
-            'valor'   => 'required|min:2|max:6',
+            'valor'   => 'min:10|max:100000|integer',
             'ativo'   => 'boolean',
             'loja_id' => 'required|integer'
         ]);
@@ -43,7 +43,7 @@ class ProdutoController extends Controller
     {
         $request->validate([
             'nome'    => 'max:60|min:3',
-            'valor'   => 'min:2|max:6',
+            'valor'   => 'min:10|max:100000|integer',
             'ativo'   => 'boolean',
             'loja_id' => 'integer'
         ]);

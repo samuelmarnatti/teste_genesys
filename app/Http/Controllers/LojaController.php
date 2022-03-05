@@ -40,7 +40,7 @@ class LojaController extends Controller
     {
         $request->validate([
             'nome'   => 'max:40|min:3',
-            'email'  => 'email',
+            'email'  => 'required|email|unique:Lojas',
         ]);
 
         if ($request->input('nome')) {

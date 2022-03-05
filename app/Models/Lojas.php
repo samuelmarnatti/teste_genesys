@@ -12,6 +12,6 @@ class Lojas extends Model
 
     public function produtos()
     {
-        return $this->hasOne(Produtos::class, 'loja_id', 'id');
+        return $this->hasMany(Produtos::class, 'loja_id', 'id');
     }
 }
