@@ -85,7 +85,12 @@ Recursos disponíveis para acesso via API:
     "created_at": "2022-03-05T19:52:54.000000Z",
     "updated_at": "2022-03-05T23:10:20.000000Z"
     }
-##### http://localhost:8000/api/produto/14   
+##### http://localhost:8000/api/produto/14
+
+    {
+    "success": true
+    }
+    
 ### Loja
 | Método | EX Comando | Descrição|
 |---|---|---|
