@@ -69,13 +69,13 @@ Recursos disponíveis para acesso via API:
         "updated_at": "2022-03-05T22:42:31.000000Z"
     }
 
-##### http://localhost:8000/api/produto?nome=Tablet&valor=1100&ativo=0&loja_id=1
+##### POST: http://localhost:8000/api/produto?nome=Tablet&valor=1100&ativo=0&loja_id=1
 
     {
     "success": true
     }
     
-##### http://localhost:8000/api/produto/14?nome=notebook&valor=3000&ativo=1&loja_id=2
+##### PATCH: http://localhost:8000/api/produto/14?nome=notebook&valor=3000&ativo=1&loja_id=2
     {
     "id": 14,
     "nome": "notebook",
@@ -85,7 +85,7 @@ Recursos disponíveis para acesso via API:
     "created_at": "2022-03-05T19:52:54.000000Z",
     "updated_at": "2022-03-05T23:10:20.000000Z"
     }
-##### http://localhost:8000/api/produto/14
+##### DELETE: http://localhost:8000/api/produto/14
 
     {
     "success": true
