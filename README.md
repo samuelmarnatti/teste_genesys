@@ -19,7 +19,7 @@ Recursos disponíveis para acesso via API:
 | `DELETE` | http://localhost:8000/api/produto/{id}  |Remove um produto do sistema. |
 
 #### Exemplo de Retorno
-##### http://localhost:8000/api/produto/
+##### GET: http://localhost:8000/api/produto/
     [
     {
         "id": 13,
@@ -58,7 +58,7 @@ Recursos disponíveis para acesso via API:
         "updated_at": "2022-03-05T20:52:00.000000Z"
     }
     ]
-##### http://localhost:8000/api/produto/13
+##### GET: http://localhost:8000/api/produto/13
     {
         "id": 13,
         "nome": "celular",
@@ -69,7 +69,7 @@ Recursos disponíveis para acesso via API:
         "updated_at": "2022-03-05T22:42:31.000000Z"
     }
 
-##### http://localhost:8000/api/produto/13
+##### http://localhost:8000/api/produto?nome=Tablet&valor=1100&ativo=0&loja_id=1
 
     {
     "success": true
