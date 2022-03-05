@@ -10,7 +10,7 @@ Recursos disponíveis para acesso via API:
 
 
 ### Produtos
-| Método | EX Comando | Descrição|
+| Método | EXP Comando | Descrição|
 |---|---|---|
 | `GET`    | http://localhost:8000/api/produto/     |Retorna informações de todos os produtos registrados. |
 | `GET`    | http://localhost:8000/api/produto/{id} |Retorna informações de um produto utilizando o ID.|
@@ -57,9 +57,35 @@ Recursos disponíveis para acesso via API:
         "created_at": "2022-03-05T20:15:38.000000Z",
         "updated_at": "2022-03-05T20:52:00.000000Z"
     }
-]
+    ]
+##### http://localhost:8000/api/produto/13
+    {
+        "id": 13,
+        "nome": "celular",
+        "valor": "R$1.500,00",
+        "ativo": 1,
+        "loja_id": 2,
+        "created_at": "2022-03-05T19:52:05.000000Z",
+        "updated_at": "2022-03-05T22:42:31.000000Z"
+    }
 
+##### http://localhost:8000/api/produto/13
 
+    {
+    "success": true
+    }
+    
+##### http://localhost:8000/api/produto/14?nome=notebook&valor=3000&ativo=1&loja_id=2
+    {
+    "id": 14,
+    "nome": "notebook",
+    "valor": "R$3.000,00",
+    "ativo": "1",
+    "loja_id": "2",
+    "created_at": "2022-03-05T19:52:54.000000Z",
+    "updated_at": "2022-03-05T23:10:20.000000Z"
+    }
+##### http://localhost:8000/api/produto/14   
 ### Loja
 | Método | EX Comando | Descrição|
 |---|---|---|
