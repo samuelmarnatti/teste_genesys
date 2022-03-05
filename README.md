@@ -9,7 +9,7 @@ Recursos disponíveis para acesso via API:
 * [**Lojas**](App\Http\Controllers\LojaController.php)
 ## Métodos
 Requisições para a API devem seguir os padrões:
-| Método | EX Comando | Descrição
+| Método | EX Comando | Descrição|
 |---|---|---|
 
 ### Produtos
