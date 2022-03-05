@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Products;
+use App\Models\Produtos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 
@@ -11,7 +11,7 @@ class ProdutoController extends Controller
     public function index()
     {
 
-        $results = Products::select('name', 'price', 'active')->get();
+        $results = Produtos::All();
 
 
         return $results;
@@ -20,42 +20,54 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'   => 'required|max:60|min:3',
-            'price'  => 'required|max:6|min:2',
-            'active'  => 'boolean'
+            'nome'    => 'required|max:60|min:3',
+            'valor'   => 'required|min:2|max:6',
+            'ativo'   => 'boolean',
+            'loja_id' => 'required|integer'
         ]);
 
-        $product = Products::create([
-            'name'      => $request->input('name'),
-            'price'     => $request->input('price'),
-            'active'    => $request->input('active'),
+        $produto = Produtos::create([
+            'nome'      => $request->input('nome'),
+            'valor'     => $request->input('valor'),
+            'ativo'     => $request->input('ativo'),
+            'loja_id'   => $request->input('loja_id'),
 
         ]);
 
         return response()->json(['success' => true]);
     }
-    public function show(Products $product)
+    public function show(Produtos $produto)
     {
-        return $product;
+        return $produto;
     }
-    public function update(Request $request, Products $product)
+    public function update(Request $request, Produtos $produto)
     {
-        if ($request->input('name')) {
-            $product->name      = $request->input('name');
+        $request->validate([
+            'nome'    => 'max:60|min:3',
+            'valor'   => 'min:2|max:6',
+            'ativo'   => 'boolean',
+            'loja_id' => 'integer'
+        ]);
+
+        if ($request->input('nome')) {
+            $produto->nome      = $request->input('nome');
         }
-        if ($request->input('price')) {
-            $product->price     = $request->input('price');
+        if ($request->input('valor')) {
+            $produto->valor     = $request->input('valor');
         }
-        if ($request->input('active')) {
-            $product->active    = $request->input('active');
+        if ($request->input('ativo')) {
+            $produto->ativo     = $request->input('ativo');
+        }
+        if ($request->input('loja_id')) {
+            $produto->loja_id   = $request->input('loja_id');
         }
 
-        $product->save();
-        return $product;
+        $produto->save();
+        return $produto;
     }
-    public function delete(Products $product)
+    public function delete(Produtos $produto)
     {
-        $product->delete();
+        $produto->delete();
         return response()->json(['success' => true]);
     }
 }

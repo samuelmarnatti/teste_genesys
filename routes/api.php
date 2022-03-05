@@ -22,7 +22,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Produtos
 Route::get("produto", "ProdutoController@index");
-Route::get("produto/{product}", "ProdutoController@show");
+Route::get("produto/{produto}", "ProdutoController@show");
 Route::post("produto", "ProdutoController@store");
-Route::patch("produto/{product}", "ProdutoController@update");
-Route::delete("produto/{product}", "ProdutoController@delete");
+Route::patch("produto/{produto}", "ProdutoController@update");
+Route::delete("produto/{produto}", "ProdutoController@delete");
+
+//loja
+
+// Loja
+Route::get("loja", "LojaController@index");
+Route::get("loja/{loja}", "LojaController@show");
+Route::post("loja", "LojaController@store");
+Route::patch("loja/{loja}", "LojaController@update");
+Route::delete("loja/{loja}", "LojaController@delete");
