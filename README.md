@@ -7,7 +7,6 @@ Recursos disponíveis para acesso via API:
 
 * [**Produtos**](App\Http\Controllers\ProdutoController.php)
 * [**Lojas**](App\Http\Controllers\LojaController.php)
-Requisições para a API devem seguir os padrões:
 
 
 ### Produtos
