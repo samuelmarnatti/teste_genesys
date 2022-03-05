@@ -7,12 +7,12 @@ Recursos disponíveis para acesso via API:
 
 * [**Produtos**](App\Http\Controllers\ProdutoController.php)
 * [**Lojas**](App\Http\Controllers\LojaController.php)
-## Métodos
 Requisições para a API devem seguir os padrões:
-| Método | EX Comando | Descrição|
-|---|---|---|
+
 
 ### Produtos
+| Método | EX Comando | Descrição|
+|---|---|---|
 | `GET`    | http://localhost:8000/api/produto/     |Retorna informações de todos os produtos registrados. |
 | `GET`    | http://localhost:8000/api/produto/{id} |Retorna informações de um produto utilizando o ID.|
 | `POST`   | http://localhost:8000/api/produto?nome=Tablet&valor=1100&ativo=0&loja_id=1 |Cadastra um novo produto. |
@@ -20,6 +20,8 @@ Requisições para a API devem seguir os padrões:
 | `DELETE` | http://localhost:8000/api/produto/{id}  |Remove um produto do sistema. |
 
 ### Loja
+| Método | EX Comando | Descrição|
+|---|---|---|
 | `GET`    | http://localhost:8000/api/loja/     |Retorna informações de todas as lojas registradas. |
 | `GET`    | http://localhost:8000/api/loja/{id} |Retorna informações da loja selecionada pelo id e todos os produtos da loja|
 | `POST`   | http://localhost:8000/api/loja?nome=havan&email=financeiro@havan.com.br |Cadastra uma nova loja |
