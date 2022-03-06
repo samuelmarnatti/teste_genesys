@@ -32,7 +32,7 @@ class AtualizaProdutoMail extends Mailable
      */
     public function build()
     {
-        $this->subject('Produto ' . $this->product->name . 'Atualizado com sucesso');
+        $this->subject('Produto ' . $this->product->name . ' Atualizado com sucesso');
         $this->from('sistema@testegenesys.com', 'sistema');
         $this->to('samuelmarnatti@gmail.com', 'Samuel Marnatti');
         return $this->view('mail.notificaAtualizaProduto', ['name' => $this->product->name]);

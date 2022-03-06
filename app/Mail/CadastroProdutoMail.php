@@ -17,9 +17,7 @@ class CadastroProdutoMail extends Mailable
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    // }
+
     public function __construct(\stdClass $product)
     {
         $this->product = $product;

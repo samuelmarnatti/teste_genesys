@@ -15,7 +15,7 @@ class ProdutoController extends Controller
 {
     public function index()
     {
-
+        //busca todos os dados da tabela
         $results = Produtos::All();
 
         return $results;
@@ -23,13 +23,14 @@ class ProdutoController extends Controller
 
     public function store(Produtos $produto, Request $request)
     {
+        //validações
         $request->validate([
             'nome'    => 'required|max:60|min:3',
             'valor'   => 'min:10|max:100000|integer',
             'ativo'   => 'boolean',
             'loja_id' => 'required|integer'
         ]);
-
+        //recebe dados via post e insere na tabela
         $produto = Produtos::create([
             'nome'      => $request->input('nome'),
             'valor'     => $request->input('valor'),
@@ -37,7 +38,7 @@ class ProdutoController extends Controller
             'loja_id'   => $request->input('loja_id'),
 
         ]);
-
+        // dispara e-mail notificando a criação do produto
         $product = new stdClass();
         $product->name = $produto->nome;
         Mail::send(new CadastroProdutoMail($product));
@@ -50,13 +51,14 @@ class ProdutoController extends Controller
     }
     public function update(Request $request, Produtos $produto)
     {
+        //validações
         $request->validate([
             'nome'    => 'max:60|min:3',
             'valor'   => 'min:10|max:100000|integer',
             'ativo'   => 'boolean',
             'loja_id' => 'integer'
         ]);
-
+        // recebe dados via patch
         if ($request->input('nome')) {
             $produto->nome      = $request->input('nome');
         }
@@ -71,6 +73,7 @@ class ProdutoController extends Controller
         }
 
         if ($produto->save()) {
+            //Dispara o e-mail de notificação ao atualizar os dados
             $product = new stdClass();
             $product->name = $produto->nome;
             Mail::send(new AtualizaProdutoMail($product));
@@ -81,6 +84,7 @@ class ProdutoController extends Controller
     }
     public function delete(Produtos $produto)
     {
+        // recebe o id do produto e deleta
         $produto->delete();
         return response()->json(['success' => true]);
     }
