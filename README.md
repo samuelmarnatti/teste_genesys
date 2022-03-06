@@ -5,10 +5,6 @@ API REST criada para teste da empresa genesys. Essa API permite visualizar infor
 
 Recursos disponíveis para acesso via API:
 
-* [**Produtos**](App\Http\Controllers\ProdutoController.php)
-* [**Lojas**](App\Http\Controllers\LojaController.php)
-
-
 ### Produtos
 | Método | EX Comando | Descrição|
 |---|---|---|
@@ -25,5 +21,5 @@ Recursos disponíveis para acesso via API:
 | `GET`    | http://localhost:8000/api/loja/{id} |Retorna informações da loja selecionada pelo id e todos os produtos da loja|
 | `POST`   | http://localhost:8000/api/loja?nome=havan&email=financeiro@havan.com.br |Cadastra uma nova loja |
 | `PATCH`  | http://localhost:8000/api/loja/{id}?email=financeiro@havan.com.br  |Atualiza dados de uma loja. |
-| `DELETE` | http://localhost:8000/api/produto/{id}  |Remove uma loja do sistema. |
+| `DELETE` | http://localhost:8000/api/loja/{id}  |Remove uma loja do sistema. |
 

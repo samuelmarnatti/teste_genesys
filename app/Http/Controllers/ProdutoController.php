@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AtualizaProdutoMail;
+use App\Mail\CadastroProdutoMail;
+use App\Mail\ProdutosMail;
 use App\Models\Produtos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
+use \Illuminate\Support\Facades\Mail;
+use stdClass;
 
 class ProdutoController extends Controller
 {
@@ -16,7 +21,7 @@ class ProdutoController extends Controller
         return $results;
     }
 
-    public function store(Request $request)
+    public function store(Produtos $produto, Request $request)
     {
         $request->validate([
             'nome'    => 'required|max:60|min:3',
@@ -32,6 +37,10 @@ class ProdutoController extends Controller
             'loja_id'   => $request->input('loja_id'),
 
         ]);
+
+        $product = new stdClass();
+        $product->name = $produto->nome;
+        Mail::send(new CadastroProdutoMail($product));
 
         return response()->json(['success' => true]);
     }
@@ -61,8 +70,14 @@ class ProdutoController extends Controller
             $produto->loja_id   = $request->input('loja_id');
         }
 
-        $produto->save();
-        return $produto;
+        if ($produto->save()) {
+            $product = new stdClass();
+            $product->name = $produto->nome;
+            Mail::send(new AtualizaProdutoMail($product));
+            return $produto;
+        } else {
+            return ['update' => false];
+        }
     }
     public function delete(Produtos $produto)
     {
