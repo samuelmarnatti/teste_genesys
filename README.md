@@ -1,5 +1,5 @@
    
-# API Teste Genesys
+# API Teste Genezys
 
 API REST criada para teste da empresa genesys. Essa API permite visualizar, alterar e deletar informações de produtos e lojas.
 
